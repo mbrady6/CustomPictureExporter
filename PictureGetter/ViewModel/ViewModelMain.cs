@@ -21,7 +21,7 @@ namespace PictureGetter.ViewModel
 
             CopyDetails = new CopyDetails();
         } 
-
+        
         public RelayCommand SelectSourceDirectoryCommand { get; set; }
         private void SelectSourceDirectory(object obj)
         {
@@ -33,7 +33,8 @@ namespace PictureGetter.ViewModel
                 {
                     CopyDetails.Source = dialog.SelectedPath;
                     DirectoryInfo directoryInfo = new DirectoryInfo(CopyDetails.Source);
-                    SourceMediaFiles = Utility.GetFileListFromDirectory(directoryInfo);
+
+                    SourceMediaFiles = Utility.GetFileListFromDirectory(directoryInfo, new ObservableCollection<MediaFile>());
                 }
             }
         }
